@@ -45,7 +45,7 @@ function doLogin(){
 		success : function(data) {
 				setTimeout("myMask.load.FullScreenHide()", 500);
 			if (data.success) {
-				setTimeout("show_errMsg(data.msg)", 500);
+				setTimeout("show_errMsg('" + data.msg + "')",500);
 				setTimeout("window.location.href='"+web_app.name+"/web/main/index.jsp'",1000);
 			} else {
 				setTimeout("show_errMsg('" + data.msg + "')",500);
