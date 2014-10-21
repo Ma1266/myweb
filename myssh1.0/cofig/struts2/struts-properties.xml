@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.action.extension"              value="do,ajax,app"></constant>
+    <constant name="struts.devMode"                       value="false"></constant>
+    <constant name="struts.i18n.reload"                   value="true"></constant>
+    <constant name="struts.ui.theme"                      value="simple"></constant>
+    <constant name="struts.locale"                        value="zh_CN"></constant>
+    <constant name="struts.i18n.encoding"                 value="UTF-8"></constant>
+    <constant name="struts.objectFactory"                 value="spring"></constant>
+    <constant name="struts.objectFactory.spring.autoWire" value="name"></constant>
+    <constant name="struts.serve.static.browserCache"     value="false"></constant>
+    <constant name="struts.url.includeParams"             value="none"></constant>
+    <constant name="struts.custom.i18n.resources"         value="config/struts/xh"></constant>
+    <constant name="struts.configuration.xml.reload"      value="true"></constant>
+    <constant name="struts.multipart.maxSize"             value="4000194304" ></constant>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+</struts>

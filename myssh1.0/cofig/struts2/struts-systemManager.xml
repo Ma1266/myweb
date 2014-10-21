@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+   <package name="system-package" extends="myweb-package" namespace="/web">
+   
+        <!-- 系统 -->
+         <action name="systemAction" class="cn.mwm.action.SystemAction">
+   		   <result name="main">/web/main/main.jsp</result>
+   		 </action>
+   		 <!-- 登录 -->
+   		 <action name="loginAction" class="cn.mwm.action.LoginAction">
+   		   <result name="main">/web/login/login.jsp</result>
+   		 </action>
+   		 
+   		 <!-- 菜单 -->
+   		 <action name="menuAction" class="cn.mwm.action.MenuAction">
+   		 </action>
+   		 
+   		 <!-- 用户-->
+   		 <action name="userAction" class="cn.mwm.action.UserAction">
+	   		 <result name="main">/web/user/userMain2.jsp</result>
+	   		 <result name="edit">/web/user/userEdit.jsp</result>
+	   		 <result name="view">/web/user/userView.jsp</result>
+   		 </action>		
+   		 
+   		  <action name="uploadAction" class="cn.mwm.action.UploadAction">  
+        </action> 
+	</package>
+</struts>
