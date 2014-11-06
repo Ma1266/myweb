@@ -1,5 +1,6 @@
 package junit;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Test;
@@ -25,12 +26,19 @@ public class UserServiceTest {
 
 	@Autowired
 	private IUserService userService;
+	@Autowired
+	private  IDictionaryService dictionaryService;
 	
 	@Test
 	public void test_getUserByName()  {
 		User tuser;
 		try {
 			tuser = userService.getUserByName("admin");
+			List<TDictionary> l=dictionaryService.findAllDic();
+			for (TDictionary tDictionary : l) {
+				System.out.println(tDictionary.getValue());
+				
+			}
 		} catch (BusinessException e) {
 			System.out.println(e.getMessage());
 		}

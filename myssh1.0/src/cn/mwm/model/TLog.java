@@ -3,6 +3,7 @@ package cn.mwm.model;
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -58,6 +59,7 @@ public class TLog implements java.io.Serializable {
 	// Property accessors
 	@Id
 	@Column(name = "LOG_ID", unique = true, nullable = false)
+	@GeneratedValue
 	public Integer getLogId() {
 		return this.logId;
 	}

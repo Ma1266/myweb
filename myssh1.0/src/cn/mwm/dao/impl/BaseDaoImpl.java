@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import cn.mwm.dao.IbaseDao;
+import cn.mwm.exception.BusinessException;
 import cn.mwm.pageModel.Page;
 @Repository("baseDao")
 public class BaseDaoImpl<T> implements IbaseDao<T> {
@@ -30,7 +31,7 @@ public class BaseDaoImpl<T> implements IbaseDao<T> {
 	}
 
 	@Override
-	public Serializable save(T o) {
+	public Serializable save(T o) throws BusinessException {
 		return getSession().save(o);
 	}
 

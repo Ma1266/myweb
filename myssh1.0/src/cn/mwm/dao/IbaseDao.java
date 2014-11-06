@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import cn.mwm.exception.BusinessException;
 import cn.mwm.pageModel.Page;
 
 
@@ -14,7 +15,7 @@ import cn.mwm.pageModel.Page;
  */
 public interface IbaseDao<T> {
 
-	public Serializable save(T o);
+	public Serializable save(T o) throws BusinessException;
 
 	public void delete(T o);
 

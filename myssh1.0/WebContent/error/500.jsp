@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
-<link href="${pageContext.request.contextPath}/lib/css/login.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/js/jquery-1.4.4.min.js"></script>
+<link href="${pageContext.request.contextPath}/lib/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/lib/js/jquery-1.9.1.min.js"></script>
 
 <script language="javascript">
 	$(function(){

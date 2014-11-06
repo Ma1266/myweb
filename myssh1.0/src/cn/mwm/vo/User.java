@@ -13,30 +13,39 @@ import cn.mwm.utils.ExcelVOAttribute;
 
 public class User {
 
-	//@ExcelVOAttribute(name="编号",isExport=true,column="A",prompt="用户信息")
 	private Integer id;
-	//@ExcelVOAttribute(name="用户名",column="B")
 	private String username;
 	private String password;	
-	//@ExcelVOAttribute(name="昵称",column="C")
 	private String nickname;
-	//@ExcelVOAttribute(name="邮箱",column="D")
 	private String email;
-	//@ExcelVOAttribute(name="电话号码",column="E")
 	private String phone;
-	//@ExcelVOAttribute(name="状态",column="F")
 	private Integer status;
-	//@ExcelVOAttribute(name="创建时间",column="G")
 	private Timestamp createDate;
-	//@ExcelVOAttribute(name="图片",column="H")
 	private String image;	
 	private String sort;
-	//@ExcelVOAttribute(name="备注",column="I")
 	private String direction;
+	private String creater;
 	
+	
+	public String getCreater() {
+		return creater;
+	}
+
+	public void setCreater(String creater) {
+		this.creater = creater;
+	}
+
 	//业务开展字段  并不存数据库
 	private TOrganization TOrganization;
 	private Set<TUserRole> TUserRoles = new HashSet<TUserRole>(0);
+
+	private  String roleNameList;
+	private Integer roleId;
+	private  String orgName;
+	private  Integer orgId;
+	private  Date beginTime;
+	private  Date endTime;
+	
 	public TOrganization getTOrganization() {
 		return TOrganization;
 	}
@@ -53,15 +62,6 @@ public class User {
 		TUserRoles = tUserRoles;
 	}
 
-	//@ExcelVOAttribute(name="角色",column="J")
-	private  String roleNameList;
-	private Integer roleId;
-	//@ExcelVOAttribute(name="部门",column="K")
-	private  String orgName;
-	private  Integer orgId;
-	private  Date beginTime;
-	private  Date endTime;
-	
 	private String ids;
 
 	public Integer getId() {

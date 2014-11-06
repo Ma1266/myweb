@@ -1,3 +1,7 @@
+/**
+ * Ma_2014
+ * 2014-10-10
+ */
 $(document).ready(function(){
 	/*重置登录框位置 使其居中显示*/
     $('.loginbox').css({'position':'absolute','left':($(window).width()-692)/2});
@@ -45,7 +49,7 @@ function doLogin(){
 		success : function(data) {
 				setTimeout("myMask.load.FullScreenHide()", 500);
 			if (data.success) {
-				setTimeout("show_errMsg('" + data.msg + "')",500);
+				setTimeout("show_errMsg(data.msg)", 500);
 				setTimeout("window.location.href='"+web_app.name+"/web/main/index.jsp'",1000);
 			} else {
 				setTimeout("show_errMsg('" + data.msg + "')",500);

@@ -67,10 +67,9 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 		} catch (Exception e) {
 			Json j = new Json();
 			e.printStackTrace();
+			logger.info("≤È—Ø¥ÌŒÛ£∫" + e.getMessage());
 			j.setMsg("≤È—Ø¥ÌŒÛ£∫" + e.getMessage());
 			j.setSuccess(false);
-			addActionError("≤È—Ø¥ÌŒÛ£∫" + e.getMessage());
-			System.out.println("≤È—Ø¥ÌŒÛ£∫" + e.getMessage());
 			super.writeJson(j);
 		}
 	}
@@ -85,8 +84,9 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	* @throws 
 	* @date 2014-10-20 …œŒÁ10:31:50 
 	* @version V1.0
+	 * @throws BusinessException 
 	 */
-	public void addUser()  {
+	public void addUser() throws BusinessException  {
 		Json json = new Json();
 		 try {
 			userService.save(user);
@@ -96,6 +96,7 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 			e.printStackTrace();
 			json.setMsg("ÃÌº” ß∞‹:"+e.getMessage());
 			json.setSuccess(false);
+			throw new BusinessException("ÃÌº” ß∞‹:"+e.getMessage());
 		}
 		 this.writeJson(json);
 	}

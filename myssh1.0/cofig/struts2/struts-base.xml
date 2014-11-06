@@ -3,31 +3,36 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+   <!-- 如果要使用struts2自动转换为json格式的话，包继承json-default 否则继承struts-default -->
    <package name="myweb-package" extends="json-default" namespace="/">
 		<interceptors>
+		    <!-- 自定义session拦截器，每次请求时检查是否有session -->
 			<interceptor name="sessionInterceptor" class="cn.mwm.interceptor.SessionInterceptor">
 			</interceptor>
+			<!-- 自定义异常拦截器配置 -->
 			<interceptor name="exceptionInterceptor" class="cn.mwm.interceptor.ExceptionInterceptor">
 			</interceptor>
+			<!-- 配置自定义栈      sessionInterceptor不拦截login*,goLoginPage的方法-->
 			<interceptor-stack name="sessionStack">
 				<interceptor-ref name="sessionInterceptor">
 				<param name="excludeMethods">login*,goLoginPage</param>
 				</interceptor-ref>
+				<!-- 此处必须加struts2默认的拦截器栈 不加的话stru2核心功能回不起作用 -->
 				<interceptor-ref name="exceptionInterceptor"></interceptor-ref>
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref name="sessionStack"></default-interceptor-ref>
-
+         <!-- 全局结果配置 -->
 		<global-results>
 			<result name="noSessionPage">/error/noSession.jsp</result>
 			<result name="loginPage">/system/login.jsp</result>
 			<result name="errorPage">/error/strutsException.jsp</result>
 		</global-results>
-
 		<global-exception-mappings>
 			<exception-mapping result="errorPage"
 				exception="java.lang.Exception"></exception-mapping>
 		</global-exception-mappings>
+		<!-- 如果采用xml配置action的话  action应该在上述内容以下位置配置，否则会报错 -->
 	</package>
 </struts>

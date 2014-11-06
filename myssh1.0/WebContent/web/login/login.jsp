@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>欢迎登录后台管理系统</title>
-<link href="${pageContext.request.contextPath}/lib/css/login.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/lib/css/style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/lib/css/mymask.css" rel="stylesheet" type="text/css" />
-<script language="JavaScript" src="${pageContext.request.contextPath}/lib/js/jquery-1.8.0.min.js"></script>
+<script language="JavaScript" src="${pageContext.request.contextPath}/lib/js/jquery-1.9.1.min.js"></script>
 <script language="JavaScript" src="${pageContext.request.contextPath}/plugins/lhgdialog/lhgdialog/lhgdialog.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/js/cloud.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/lib/js/mask.js" type="text/javascript"></script>

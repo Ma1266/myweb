@@ -3,18 +3,30 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 	"http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+    <!-- 接受所有匹配 .do,.ajax,.app结尾的请求-->
     <constant name="struts.action.extension"              value="do,ajax,app"></constant>
-    <constant name="struts.devMode"                       value="false"></constant>
+    <!-- 是否启用开发模式,一般开发阶段配置成true,部署时配置成false -->
+    <constant name="struts.devMode"                       value="true"></constant>
+    <!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->
     <constant name="struts.i18n.reload"                   value="true"></constant>
+    <!-- 设置struts2主题-->
     <constant name="struts.ui.theme"                      value="simple"></constant>
+    <!-- 本地化配置 支持中文 -->
     <constant name="struts.locale"                        value="zh_CN"></constant>
+    <!-- 请求参数的编码方式 -->
     <constant name="struts.i18n.encoding"                 value="UTF-8"></constant>
+    <!-- 指定由spring负责action对象的创建，若action采用xml方式配置时class不用写action类路径,直接写sping bean name -->
     <constant name="struts.objectFactory"                 value="spring"></constant>
     <constant name="struts.objectFactory.spring.autoWire" value="name"></constant>
+    <!-- 设置浏览器是否缓存静态内容  为能及时访问到最新数据,最好设置为false-->
     <constant name="struts.serve.static.browserCache"     value="false"></constant>
-    <constant name="struts.url.includeParams"             value="none"></constant>
-    <constant name="struts.custom.i18n.resources"         value="config/struts/xh"></constant>
+    <!-- struts配置文件改动后，是否重新加载 -->
     <constant name="struts.configuration.xml.reload"      value="true"></constant>
+    <!-- 文件上传最大值 -->
     <constant name="struts.multipart.maxSize"             value="4000194304" ></constant>
+    <!-- 让struts2支持动态方法调用  前台可以以:userAction!login.do这种方式调用-->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<constant name="struts.custom.i18n.resources"         value="config/struts/xh"></constant>
+	<constant name="struts.url.includeParams"             value="none"></constant>
+	
 </struts>

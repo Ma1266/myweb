@@ -1,4 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:if test="${sessionInfo==null}">
+<c:redirect url="${pageContext.request.contextPath}/index.jsp"/>
+</c:if>
 <jsp:include page="/common.jsp"></jsp:include>
 <script type="text/javascript" src="user/userMain.js"></script>
 

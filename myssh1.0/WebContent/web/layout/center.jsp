@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<link href="${pageContext.request.contextPath}/lib/css/login.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/lib/css/style.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" charset="utf-8">
 	var centerTabs;

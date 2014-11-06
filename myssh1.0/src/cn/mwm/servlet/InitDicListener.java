@@ -1,85 +1,66 @@
 package cn.mwm.servlet;
 
-import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import cn.mwm.dao.IndicDao;
+import cn.mwm.exception.BusinessException;
 import cn.mwm.model.TDictionary;
 import cn.mwm.service.IDictionaryService;
 import cn.mwm.service.IUserService;
 
-/**
+
+
+
+/**系统启动时加载数据字典
  * Servlet implementation class InitDicListener
  */
-public class InitDicListener extends HttpServlet implements ServletContextListener {
+public class InitDicListener implements ServletContextListener{
 	/**
 	 * Logger for this class
 	 */
 	private static final Logger logger = Logger.getLogger(InitDicListener.class);
 
 	private static final long serialVersionUID = 1L;
-       
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InitDicListener() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-     * @see ServletContextListener#contextInitialized(ServletContextEvent)
-     */
-    public void contextInitialized(ServletContextEvent sct) {
-    	//加载数据字典
-    	logger.info("*****系统启动,开始加载数据字典******");
-    	try {
-			ApplicationContext act=WebApplicationContextUtils.getWebApplicationContext(sct.getServletContext());
-			// IDictionaryService dicD=(IDictionaryService)act.getBean("dicService");
-			 //List<TDictionary> dic=dicD.findAllDic();
-			//IUserService userService=(IUserService) act.getBean("userService");
-			//userService.getUserByName("admi100");
+	@Override
+	public void contextDestroyed(ServletContextEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent sce) {
+	    try {
+			//加载数据字典
+			logger.info("*****系统启动,开始加载数据字典******");
+			ApplicationContext act=WebApplicationContextUtils.getWebApplicationContext(sce.getServletContext());
+			IDictionaryService dicD=(IDictionaryService)act.getBean("dicService");
+			//List<TDictionary> dic=dicD.findAllDic();
+			//将数据字典放入系统缓存中 待完成
 			logger.info("*****系统启动成功,数据字典加载完成******");
 		} catch (BeansException e) {
-			logger.info("数据字典加载出错"+e.getMessage());
 			e.printStackTrace();
-		}
-    }
+			logger.info("数据字典加载出错"+e.getMessage());
 
-	/**
-     * @see ServletContextListener#contextDestroyed(ServletContextEvent)
-     */
-    public void contextDestroyed(ServletContextEvent arg0) {
-        // TODO Auto-generated method stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		} 	
+		
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+       
+	
 
 }

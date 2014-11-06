@@ -3,6 +3,7 @@ package cn.mwm.model;
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -51,6 +52,7 @@ public class TDictionary implements java.io.Serializable {
 	// Property accessors
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
+	@GeneratedValue
 	public Integer getId() {
 		return this.id;
 	}

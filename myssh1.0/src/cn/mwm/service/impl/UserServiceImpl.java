@@ -4,30 +4,28 @@ package cn.mwm.service.impl;
 import org.apache.log4j.Logger;
 
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.prefs.BackingStoreException;
 
-import javax.management.relation.InvalidRoleInfoException;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import cn.mwm.dao.IUserDao;
 import cn.mwm.exception.BusinessException;
+import cn.mwm.model.TOrganization;
 import cn.mwm.model.TRole;
 import cn.mwm.model.TUser;
 import cn.mwm.model.TUserRole;
 import cn.mwm.pageModel.Page;
-import cn.mwm.service.IRoleService;
 import cn.mwm.service.IUserService;
+import cn.mwm.utils.DateUtil;
 import cn.mwm.vo.User;
 
 @Service("userService")
@@ -41,23 +39,31 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private IUserDao userDao;
 	
-	//@Autowired
-	//private IRoleService roleService;  
 	@SuppressWarnings("unchecked")
 	@Override
-	public void save(User tuser) throws BusinessException {
+	public void save(User tuser) throws Exception {
 		if(null==tuser){
 			throw new BusinessException("用户对象为空！");
 		}
-		//1.保存用户表
-		TUser user=(TUser) userDao.save(tuser);
-		//保存到用户角色表
-		//TRole role=roleService.fi
-		TUserRole userRole=new TUserRole();
-		//userRole.setId(user.getId());
-		//userRole.setTRole(tuser.getRoleId());
-		
-		userDao.save(tuser);
+		TUser user=new TUser();
+		BeanUtils.copyProperties(tuser,user);
+		if(tuser.getRoleId() != null ){
+			TRole role=new TRole();
+			TUserRole userRole=new TUserRole();
+			Set<TUserRole> troles=new HashSet<TUserRole>();			
+			role.setId(tuser.getRoleId());
+			userRole.setTUser(user);
+			userRole.setTRole(role);
+			troles.add(userRole);
+			user.setTUserRoles(troles);
+		}
+		if(null != tuser.getOrgId()){
+			TOrganization org=new TOrganization();
+			org.setOrganizationId(tuser.getOrgId());
+			user.setTOrganization(org);
+		}
+		user.setCreateDate(DateUtil.getDateTime());
+		userDao.save(user);
 	}
 
 	@Override

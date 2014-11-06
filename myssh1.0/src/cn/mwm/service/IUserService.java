@@ -20,8 +20,9 @@ public interface IUserService {
 	* @date 2014-9-18 обнГ1:54:29 
 	* @version V1.0
 	 * @throws BusinessException 
+	 * @throws Exception 
 	 */
-	void save(User tuser) throws BusinessException;
+	void save(User tuser) throws Exception;
    /**
     * 
    * @Title: getUserById 
